@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "unordered_map": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "iosfwd": "cpp",
+        "utility": "cpp",
+        "ratio": "cpp",
+        "queue": "cpp",
+        "functional": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "unordered_set": "cpp",
+        "stack": "cpp"
+    }
+}
