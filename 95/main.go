@@ -1,5 +1,6 @@
 package main
 
+import "comm"
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
