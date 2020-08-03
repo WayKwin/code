@@ -16,5 +16,8 @@
         "chrono": "cpp",
         "unordered_set": "cpp",
         "stack": "cpp"
-    }
+    },
+    "go.gopath":"/Users/waykwin/practice/leetcode",
+    "go.inferGopath":true,
+    "go.testFlags":["-v"]
 }

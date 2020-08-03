@@ -1,6 +1,7 @@
 package main
 
 import . "comm"
+
 func buildTree(preorder []int, inorder []int) *TreeNode {
 	index := 0
 	return core(preorder, inorder, 0, len(inorder), &index)
@@ -24,4 +25,7 @@ func core(preorder []int, inorder []int, inorderStart, inorderEnd int, index *in
 	root.Left = core(preorder, inorder, inorderStart, rootIdex, index)
 	root.Right = core(preorder, inorder, rootIdex+1, inorderEnd, index)
 	return root
+}
+func main() {
+
 }
