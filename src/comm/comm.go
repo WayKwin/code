@@ -3,7 +3,6 @@ package comm
 import (
 	"container/list"
 	"fmt"
-	"strconv"
 )
 
 type TreeNode struct {
@@ -11,10 +10,24 @@ type TreeNode struct {
 	Left  *TreeNode
 	Right *TreeNode
 }
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
-func SliceToTree(s []string) *TreeNode {
+func SliceToList(s []int) *ListNode {
+	dummpyNode := &ListNode{0, nil}
+	cur := dummpyNode
+	for _, val := range s {
+		cur.Next = &ListNode{val, nil}
+		cur = cur.Next
+	}
+	return dummpyNode.Next
+}
+
+func SliceToTree(s []interface{}) *TreeNode {
 	queue := list.New()
-	num, _ := strconv.Atoi(s[0])
+	num, _ := s[0].(int)
 	root := &TreeNode{num, nil, nil}
 	queue.PushBack(root)
 	cur := 1
@@ -24,10 +37,10 @@ LOOP:
 		for i := 0; i < l; i++ {
 			front := queue.Front().Value.(*TreeNode)
 			queue.Remove(queue.Front())
-			if s[cur] == "null" {
+			if s[cur] == nil {
 				front.Left = nil
 			} else {
-				num, _ = strconv.Atoi(s[cur])
+				num, _ = s[cur].(int)
 				front.Left = &TreeNode{num, nil, nil}
 				queue.PushBack(front.Left)
 			}
@@ -35,10 +48,10 @@ LOOP:
 			if cur >= len(s) {
 				break
 			}
-			if s[cur] == "null" {
+			if s[cur] == nil {
 				front.Right = nil
 			} else {
-				num, _ = strconv.Atoi(s[cur])
+				num, _ = s[cur].(int)
 				front.Right = &TreeNode{num, nil, nil}
 				queue.PushBack(front.Right)
 			}
@@ -52,11 +65,20 @@ LOOP:
 
 	return root
 }
-func preOrder(root *TreeNode) {
+func PreOrder(root *TreeNode) {
 	if root == nil {
 		return
 	}
 	fmt.Println(root.Val)
-	preOrder(root.Left)
-	preOrder(root.Right)
+	PreOrder(root.Left)
+	PreOrder(root.Right)
+}
+
+func InOrder(root *TreeNode) {
+	if root == nil {
+		return
+	}
+	InOrder(root.Left)
+	fmt.Println(root.Val)
+	InOrder(root.Right)
 }
