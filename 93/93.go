@@ -26,15 +26,15 @@ func parse() (str string) {
 	return
 }
 func dfs(s string, curIndex int, charNum int, curLevel int) {
-	for i := 0; i < 3; i++ {
-		if curLevel == 4 {
-			if curIndex >= len(s) {
-				//check oneREsu
-				result = append(result, parse())
-			} else {
-				return
-			}
+	if curLevel == 4 {
+		if curIndex >= len(s) {
+			//check oneREsu
+			result = append(result, parse())
+		} else {
+			return
 		}
+	}
+	for i := 0; i < 3; i++ {
 		if curIndex >= len(s) || curIndex+i+1 > len(s) {
 			return
 		}
@@ -45,7 +45,7 @@ func dfs(s string, curIndex int, charNum int, curLevel int) {
 		//判断是否 0 < x <= 255
 		num, _ := strconv.Atoi(s[curIndex : curIndex+i+1])
 		if num > 255 {
-			continue
+			return
 		}
 		oneResult = append(oneResult, s[curIndex:curIndex+i+1])
 		dfs(s, curIndex+i+1, i, curLevel+1)

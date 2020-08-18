@@ -10,6 +10,12 @@ type TreeNode struct {
 	Left  *TreeNode
 	Right *TreeNode
 }
+type Node struct {
+	Val   int
+	Left  *Node
+	Right *Node
+	Next  *Node
+}
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -31,7 +37,6 @@ func SliceToTree(s []interface{}) *TreeNode {
 	root := &TreeNode{num, nil, nil}
 	queue.PushBack(root)
 	cur := 1
-LOOP:
 	for cur < len(s) {
 		l := queue.Len()
 		for i := 0; i < l; i++ {
@@ -56,10 +61,10 @@ LOOP:
 				queue.PushBack(front.Right)
 			}
 			cur++
-			if front.Left == nil && front.Right == nil && cur < len(s) {
-				fmt.Println("input error")
-				break LOOP
-			}
+			// if front.Left == nil && front.Right == nil && cur < len(s) {
+			// 	fmt.Println("input error")
+			// 	break LOOP
+			// }
 		}
 	}
 
@@ -81,4 +86,10 @@ func InOrder(root *TreeNode) {
 	InOrder(root.Left)
 	fmt.Println(root.Val)
 	InOrder(root.Right)
+}
+func Abs(a int) int {
+	if a > 0 {
+		return a
+	}
+	return -a
 }

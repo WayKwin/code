@@ -1,3 +1,4 @@
+package main
 import . "comm"
 func flatten(root *TreeNode)  {
     core(root)
@@ -19,6 +20,5 @@ func core(root* TreeNode) *TreeNode{
         node.Right = r
     }
     root.Left = nil
-
     return root
 }
