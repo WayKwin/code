@@ -21,19 +21,6 @@ import (
  * }
  */
 
-func findMost(root *Node, direction int) *Node {
-	if root == nil {
-		return nil
-	}
-	if root.Left == nil && root.Right == nil {
-		return root
-	}
-	if direction == 1 {
-		return findMost(root.Right, direction)
-	} else {
-		return findMost(root.Left, direction)
-	}
-}
 func connect(root *Node) *Node {
 	if root == nil {
 		return nil
