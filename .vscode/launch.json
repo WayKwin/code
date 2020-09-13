@@ -12,6 +12,9 @@
             "args": [
                 // "-std=c++11"
             ],
+            "env":{
+                "GO111MODULE": "off"
+            },
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
